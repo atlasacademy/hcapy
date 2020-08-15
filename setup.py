@@ -2,9 +2,9 @@ from setuptools import setup, find_packages, Extension
 from Cython.Build import build_ext, cythonize
 
 
-with open('README.md') as f:
+with open('README.md', encoding='utf8') as f:
     readme = f.read()
-with open('LICENSE') as f:
+with open('LICENSE', encoding='utf8') as f:
     li = f.read()
 
 setup(
@@ -17,6 +17,9 @@ setup(
     license=li,
     url='https://github.com/CrescentApricot/hcapy',
     packages=find_packages(exclude=('tests',)),
+    setup_requires=[
+        "Cython"
+    ],
     ext_modules=[
         Extension("hcapy", sources=["module.pyx", "hca2wav/src/clHCA.cpp"], language="c++")
     ],
